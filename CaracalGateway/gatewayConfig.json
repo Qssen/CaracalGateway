@@ -1,0 +1,46 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/todos/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "jsonplaceholder.typicode.com",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/todos/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DelegatingHandlers": [ "TestRequestDelegationHandler" ]
+    },
+    {
+      "DownstreamPathTemplate": "/todos/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "jsonplaceholder.typicode.com",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/get/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DelegatingHandlers": [ "DomainLimitDelegatingHandler" ]
+    },
+    {
+      "DownstreamPathTemplate": "/todos/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "jsonplaceholder.typicode.com/sample/text",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/get2/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DelegatingHandlers": [ "EndpointApiTokenCheckDelegatingHandler" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:80"
+  }
+}

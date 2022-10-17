@@ -1,0 +1,12 @@
+﻿version: '3.9'
+services:
+  caracalgateway:
+    build: .
+    ports:
+      - '80:80'
+  redis:
+    image: 'redis:latest'
+    environment:
+      - 'ALLOW_EMPTY_PASSWORD=yes'
+    ports:
+      - '6379:6379'
