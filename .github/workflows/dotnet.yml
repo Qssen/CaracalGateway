@@ -22,9 +22,15 @@ jobs:
    runs-on: ubuntu-latest
    
    steps:
-     - uses: actions/checkout@v3
-     - name: Build docker
-       run: docker build . -t test-caracal-gateway
-     - name: Docker Login
-       run: docker login ghcr.io -u Qssen --password-stdin
+   - uses: actions/checkout@v3
+   
+   - name: Docker Login
+     uses: docker/login-action@v2
+     with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
+   - name: Build docker
+     run: docker build . -t test-caracal-gateway
        
