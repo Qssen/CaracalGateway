@@ -32,7 +32,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         
    - name: Build docker
-     run: docker build . -t test-caracal-gateway
+     run: docker build . -t ghcr.io/Qssen/test-caracal-gateway:latest
    - name: Deploy Container
-     run: docker push test-caracal-gateway:latest
+     run: docker push ghcr.io/Qssen/test-caracal-gateway:latest
        
